@@ -1,0 +1,12 @@
+#!/usr/bin/nodejs
+/**
+ * Starts express server
+ */
+const app = require('../app');
+const { logger } = require('../utils/logs/logger');
+
+app.set('port', process.env.PORT);
+
+const server = app.listen(app.get('port'), () => {
+  logger.info(`Express server listening on port ${server.address().port}`);
+});

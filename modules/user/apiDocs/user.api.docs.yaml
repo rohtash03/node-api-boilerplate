@@ -1,0 +1,120 @@
+/users:
+  get:
+    summary: User GET endpoint
+    responses:
+      '200':
+        description: OK
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  type: object
+                  required:
+                    - users
+                  properties:
+                    users:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/User'
+              required:
+                - data
+            examples:
+              example-1:
+                value:
+                  data:
+                    users:
+                      _id: 5e3aa5dba8ec415c8c0bc822
+                      username: abc
+                      password: $2b$10$pL.AmqTo7rF.M9oS.SmLGeD2oTTo8IkVHu8EM9HaLZyIj1XI38v/.
+                      alternatePhones: []
+                      __v: 0
+      '400':
+        description: Bad Request
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  type: object
+                status:
+                  type: object
+                  properties:
+                    code:
+                      type: number
+                    messgae:
+                      type: string
+            examples:
+              example-1:
+                value:
+                  status:
+                    code: 400
+                    message: Invalid params
+                  data: {}
+    operationId: get-users
+    description: Get list of users with matching name
+    security:
+      - bearerAuth: []
+    parameters:
+      - schema:
+          type: string
+        in: query
+        name: name
+        required: true
+        description: Name of user
+        example: abc
+    tags:
+      - User
+  post:
+    summary: User Post Endpoint
+    operationId: post-users
+    responses:
+      '200':
+        description: OK
+        headers: {}
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  type: object
+                  required:
+                    - user
+                  properties:
+                    user:
+                      $ref: '#/components/schemas/User'
+              required:
+                - data
+            examples:
+              example-1:
+                value:
+                  data:
+                    user:
+                      _id: 5e4d1f9904b0e44ae306c38a
+                      username: abc
+                      password: $2b$10$/PQFZFg4iHDRmhxupIoq0eSlitSOlj.ke8aigdus5UAUCCkIoqJEu
+                      alternatePhones: []
+                      __v: 0
+    description: Creates new user
+    requestBody:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              user:
+                $ref: '#/components/schemas/User'
+            required:
+              - user
+          examples:
+            example-1:
+              value:
+                user:
+                  username: abc
+                  password: abc
+      description: 'User model, change value of username in example'
+    tags:
+      - User

@@ -1,0 +1,54 @@
+/login:
+  post:
+    summary: Login User
+    operationId: post-login
+    responses:
+      '200':
+        description: OK
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  type: object
+                  required:
+                    - authToken
+                  properties:
+                    authToken:
+                      type: string
+              required:
+                - data
+            examples:
+              example-1:
+                value:
+                  data:
+                    user:
+                      _id: 5e3aa5dba8ec415c8c0bc822
+                      username: abc
+                      password: $2b$10$pL.AmqTo7rF.M9oS.SmLGeD2oTTo8IkVHu8EM9HaLZyIj1XI38v/.
+                      alternatePhones: []
+                      __v: 0
+                    authToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZTNhYTVkYmE4ZWM0MTVjOGMwYmM4MjIiLCJpYXQiOjE1ODIxMTUyNTUsImV4cCI6MTU4NDcwNzI1NX0.2PrAEGD6szoHFNHPhvCIll2Udp0jyeVo9wpB9u_4nFA
+    description: User Login API
+    tags:
+      - Login
+    requestBody:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              username:
+                type: string
+              password:
+                type: string
+            required:
+              - username
+              - password
+          examples:
+            example-1:
+              value:
+                username: abc
+                password: abc
+      description: Takes user object with username and password

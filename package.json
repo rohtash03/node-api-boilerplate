@@ -1,0 +1,66 @@
+{
+  "name": "node-b",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "NODE_ENV=development node ./bin/www",
+    "lint": "eslint '**/*.js' --fix",
+    "format": "prettier-eslint '**/*.{js,json}' --write",
+    "pretty": "prettier --write --tab-width 2 \"**/*.js\"",
+    "test": "NODE_ENV=development mocha --exit --recursive './modules/**/*tests.js'",
+    "test-with-coverage": "NODE_ENV=development nyc --reporter=text  mocha --recursive './modules/**/*tests.js'",
+    "test-auto-cases": "NODE_ENV=development mocha --recursive './tests/**/*.js'",
+    "create-module": "bash ./scripts/create.module.sh"
+  },
+  "lint-staged": {
+    "**/*.js": [
+      "eslint --fix",
+      "prettier-eslint --write",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged && npm run test"
+    }
+  },
+  "roh": {
+    "pr": "watch"
+  },
+  "dependencies": {
+    "bcrypt": "^3.0.7",
+    "body-parser": "^1.19.0",
+    "bunyan": "^1.8.12",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "chakram": "^1.5.0",
+    "compression": "^1.7.4",
+    "debug": "^4.1.1",
+    "express": "~4.17.1",
+    "express-ajv-swagger-validation": "^1.1.1",
+    "express-http-context": "^1.2.3",
+    "install": "^0.13.0",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.15",
+    "mongoose": "^5.8.9",
+    "mongoose-to-swagger": "^1.0.3",
+    "morgan": "^1.9.1",
+    "npm": "^6.13.7",
+    "nyc": "^15.0.0",
+    "oatts": "^1.5.0",
+    "pug": "^2.0.4",
+    "swagger-jsdoc": "^3.5.0",
+    "swagger-ui-express": "^4.1.2",
+    "uuid": "^3.4.0"
+  },
+  "devDependencies": {
+    "chai-openapi-response-validator": "^0.7.0",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.17.3",
+    "husky": "^2.3.0",
+    "lint-staged": "^8.1.7",
+    "mocha": "^4.0.1",
+    "prettier-eslint-cli": "^5.0.0"
+  }
+}

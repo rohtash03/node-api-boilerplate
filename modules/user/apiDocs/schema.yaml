@@ -1,0 +1,23 @@
+# https://stoplight.io/p/studio/ - GUI tool to generate OpenAPI specs
+
+components:
+  schemas:
+    User:
+      title: User
+      type: object
+      properties:
+        username:
+          type: string
+          description: Unique
+        password:
+          type: string
+      required:
+        - username
+        - password
+      x-tags:
+        - user
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

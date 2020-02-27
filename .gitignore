@@ -1,0 +1,9 @@
+# Add files, folders here which should not be commited to repo
+
+node_modules
+
+# nyc istanbul output folder
+.nyc_output
+
+# secret key files
+config/keys/

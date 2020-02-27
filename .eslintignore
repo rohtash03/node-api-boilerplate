@@ -1,0 +1,3 @@
+# ignore lint check for all files in test folder as they are auto generated from oatts module
+# and are for experiment purpose only.
+tests/*
