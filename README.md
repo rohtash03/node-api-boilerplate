@@ -8,7 +8,7 @@
  
 ### Features
  - **Multilayer Folder Architecture** - Focused on scalibility and separation of concerns. Helper script to create new module with single command.
- - **OpenAPI Specifications** - Uses common OpenAPI specs to auto handle multiple functionalities like API documentation, request and response validation.
+ - **OpenAPI Specifications** - Uses common OpenAPI specs to auto handle multiple functionalities like API documentation (swagger ui), request body validation, response validation for test cases and generate mock APIs.
  - **Web Server** - Scalable and easy to use Express server which provides request routing and middlewares.
  - **Production Ready** - Ready to go live on production with PM2 process manager. 
  - **Database Integration** - Uses mongoose for database integration. DB models and queries are in separate structure which can be also used as submodule inside other repos.
@@ -21,7 +21,7 @@
     
 ### Prerequisites
 - mongodb 3.6.3
-- node v8.15.0
+- node v15.4.0
 - npm 6.4.1
 - pm2 3.2.4
 
@@ -32,14 +32,16 @@
  - Start mongodb server on localhost.
  - Create development.js env file inside config/keys/ folder. Copy content of config/example.development.js file inside it and update mongodb credentials. 
  - Start server with ``` npm run start ``` or ```pm2 start ecosystem.config.js ```
- - Visit http://localhost:3000/api-docs in browser to run APIs.  
+ - Visit http://localhost:3000/api-docs in browser to run APIs.
+ - Start mock server with ``` prism mock swaggerDoc.json ```. Prism requires NodeJS >= 12 to work properly.
  
 ### Commands
 - ``` npm run start ``` - to start express server
 - ``` npm run test``` - to start test run
 - ``` run test-with-coverage``` - generates test cases coverage report
-- ``` run create-module order``` - creates new module order inside modules folder with subfolders like controllers, routes, apiDocs and tests
-For more commands checkout package.json => scripts.
+- ``` run create-module order``` - creates new module order inside modules folder with subfolders like controllers, routes, apiDocs and tests. For more commands checkout package.json => scripts.
+- ``` prism mock swaggerDoc.json ``` - to start mock API server.
+
 
 ### Code Flow
 - bin/www starts node server using express app object imported from app.js

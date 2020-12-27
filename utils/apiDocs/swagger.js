@@ -5,6 +5,7 @@
  */
 const swaggerJSDoc = require('swagger-jsdoc');
 const swaggerValidation = require('express-ajv-swagger-validation');
+const fs = require('fs');
 
 const swaggerDefinition = {
   openapi: '3.0.0',
@@ -27,6 +28,9 @@ const options = {
 };
 
 const swaggerSpec = swaggerJSDoc(options);
+
+// Compile all yaml files and write to single json file for mock API generation tool - prism
+fs.writeFileSync('swaggerDoc.json', JSON.stringify(swaggerSpec));
 
 swaggerValidation.init(swaggerSpec, {
   beautifyErrors: true,

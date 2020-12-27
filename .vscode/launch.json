@@ -9,6 +9,7 @@
             "request": "launch",
             "name": "Launch Program",
             "program": "${workspaceFolder}/bin/www",
+            "env": { "NODE_ENV": "development" },
             "outputCapture": "std",
         }
     ]

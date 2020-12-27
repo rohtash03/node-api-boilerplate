@@ -6,9 +6,9 @@ const { logger } = require('../../../utils/logs/logger');
 const getUsers = async (req, res) => {
   try {
     const users = await UserModel.findAllUsersWithNameLike({ username: req.query.name });
-    successResponse({ req, res, data: { users } });
+    return successResponse({ req, res, data: { users } });
   } catch (error) {
-    errorResponse({ req, res, error });
+    return errorResponse({ req, res, error });
   }
 };
 
@@ -20,9 +20,9 @@ const createUser = async (req, res) => {
     user.password = bcrypt.hashSync(user.password, 10);
     const userData = await user.createUser();
     logger.info('createUser created', userData);
-    successResponse({ req, res, data: { user: userData } });
+    return successResponse({ req, res, data: { user: userData } });
   } catch (error) {
-    errorResponse({ req, res, error });
+    return errorResponse({ req, res, error });
   }
 };
 

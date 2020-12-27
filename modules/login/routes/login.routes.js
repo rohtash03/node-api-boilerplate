@@ -1,4 +1,6 @@
 const { login } = require('../controllers/login.controller');
+
+// swaggerValidation.validate middleware cross checks request input with API documentation.
 const { swaggerValidation } = require('../../../utils/apiDocs/swagger');
 
 module.exports = (router) => {

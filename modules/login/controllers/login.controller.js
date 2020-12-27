@@ -16,9 +16,9 @@ const login = async (req, res) => {
     }
     // eslint-disable-next-line no-underscore-dangle
     const authToken = jwt.signToken({ _id: user._id.toString() });
-    successResponse({ req, res, data: { user, authToken } });
+    return successResponse({ req, res, data: { user, authToken } });
   } catch (error) {
-    errorResponse({ req, res, error });
+    return errorResponse({ req, res, error });
   }
 };
 

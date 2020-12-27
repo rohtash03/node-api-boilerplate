@@ -29,9 +29,9 @@ const { logger } = require('../../../utils/logs/logger');
 
 const getFunction = async (req, res) => {
   try {
-    successResponse({ req, res, data: {} });
+    return successResponse({ req, res, data: {} });
   } catch (error) {
-    errorResponse({ req, res, error });
+    return errorResponse({ req, res, error });
   }
 };
 

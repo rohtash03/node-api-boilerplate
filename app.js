@@ -63,7 +63,7 @@ app.use((req, res, next) => {
 
 app.use('/', routes);
 
-// 404 handler
+// 404 handler if requested url is not found
 // eslint-disable-next-line no-unused-vars
 app.use((req, res, next) => errorResponse({
   code: 404,
